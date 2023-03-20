@@ -23,17 +23,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //[SerializeField] public FixedJoystick _moveJoystick;
-    //[SerializeField] private Rigidbody _rb;
-    //[SerializeField] private Animator _animation;
-    //[SerializeField] private float _speed;
-    //private void Update()
-    //{
-    //    float horiz = _moveJoystick.Horizontal;
-    //    float vert = _moveJoystick.Vertical;
-    //    Vector3 direction = new Vector3(horiz, 0, vert).normalized;
-    //    transform.Translate(direction * 0.02f, Space.World);
-    //}
+    
 
 }
 
