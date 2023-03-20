@@ -46,11 +46,20 @@ public class PlayerPhysics : MonoBehaviour
         }
     }
 
+    //private void CorrectPlayerHeight(Vector3 targetPosition)
+    //{
+    //    Vector3 playerPos = transform.position;
+    //    playerPos.y = Mathf.Lerp(playerPos.y, targetPosition.y + _playerGrounDistance, _fallFakeDistance);
+    //    transform.position = playerPos;
+    //}
     private void CorrectPlayerHeight(Vector3 targetPosition)
     {
         Vector3 playerPos = transform.position;
-        playerPos.y = Mathf.Lerp(playerPos.y, targetPosition.y + _playerGrounDistance, _fallFakeDistance);
+        //playerPos.y = Mathf.Lerp(playerPos.y, targetPosition.y + _playerGrounDistance, _fallSpeed * Time.deltaTime);
+        //transform.position = playerPos;
+        playerPos = Vector3.Lerp(playerPos, targetPosition + Vector3.up * _playerGrounDistance, _fallSpeed * Time.deltaTime);
         transform.position = playerPos;
+
     }
 
 }
