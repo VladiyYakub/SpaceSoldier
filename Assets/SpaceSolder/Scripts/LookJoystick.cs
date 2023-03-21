@@ -1,17 +1,26 @@
 using UnityEngine;
-using UnityEngine.UI;
-
 public class LookJoystick : MonoBehaviour
 {
-   [SerializeField] public float _rotationSpeed = 100f;
-   [SerializeField] public Joystick _joystick;
+    [SerializeField] public float _speed;
+    [SerializeField] public float _rotateSpeed;
+    [SerializeField] public Joystick _joystick;
+    private Rigidbody rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     void FixedUpdate()
     {
-        float horizontal = _joystick.Horizontal;
-        float vertical = _joystick.Vertical;
-
-        transform.Rotate(0, horizontal * _rotationSpeed * Time.deltaTime, 0);
-        transform.Rotate(-vertical * _rotationSpeed * Time.deltaTime, 0, 0);
+        float moveHorizontal = _joystick.Horizontal;
+        float moveVertical = _joystick.Vertical;
+        Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);        
+        if (movement != Vector3.zero)
+        {
+            Quaternion newRotation = Quaternion.LookRotation(movement);
+            rb.rotation = Quaternion.Slerp(rb.rotation, newRotation, _rotateSpeed * Time.deltaTime);
+        }        
+        rb.AddForce(movement * _speed);
     }
 }

@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
@@ -22,8 +21,5 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isRunning", false);
         }
     }
-
-    
-
 }
 
