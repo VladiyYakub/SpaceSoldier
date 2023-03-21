@@ -1,11 +1,8 @@
 using UnityEngine;
-using UnityEngine.UI;
-
 public class MoveJoystick : MonoBehaviour
 {
-   [SerializeField] public float _speed = 10f;
-   [SerializeField] public Joystick _moveJoystick;
-
+    [SerializeField] public float _speed;
+    [SerializeField] public Joystick _moveJoystick;
     private Rigidbody _rb;
 
     void Start()
@@ -22,4 +19,9 @@ public class MoveJoystick : MonoBehaviour
 
         _rb.AddForce(movement * _speed);
     }
+
+    //private void FixedUpdate()
+    //{
+    //    _rb.velocity = new Vector3(_moveJoystick.Horizontal * _speed, _rb.velocity.y, _moveJoystick.Vertical * _speed);
+    //}
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-
 public class PlayerPhysics : MonoBehaviour
 {
     [SerializeField] private Transform _origin;
