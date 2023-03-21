@@ -4,26 +4,48 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private FixedJoystick _joystickMove;
-    //[SerializeField] private FixedJoystick _joystickLook;
     [SerializeField] private Animator _animator;
     [SerializeField] private float _movespeed;
+    [SerializeField] private float _startToMoveOn;
+
+    private Vector3 _moveDirection;
 
     private void FixedUpdate()
     {
-        _rb.velocity = new Vector3(_joystickMove.Horizontal * _movespeed, _rb.velocity.y, _joystickMove.Vertical * _movespeed);
+        CalculateMoveDirection();
+        UpdateRotation();
+        UpdatePosition();
+    }
+    private void CalculateMoveDirection()
+    {
+        _moveDirection = new Vector3(_joystickMove.Horizontal * _movespeed, 0,
+            _joystickMove.Vertical * _movespeed);
+    }
 
+    private void UpdateRotation()
+    {
         if (_joystickMove.Horizontal != 0 || _joystickMove.Vertical != 0)
         {
-            transform.rotation = Quaternion.LookRotation(_rb.velocity);
+            Quaternion lookDirection = transform.rotation * Quaternion.LookRotation(_moveDirection);
+            transform.rotation = Quaternion.Lerp(transform.rotation, lookDirection, 0.05f);
+        }
+    }
+
+    private void UpdatePosition()
+    {
+        var isAbleToMove = _joystickMove.Horizontal > _startToMoveOn || _joystickMove.Vertical > _startToMoveOn || 
+            _joystickMove.Horizontal < -_startToMoveOn || _joystickMove.Vertical < -_startToMoveOn;
+
+        if (isAbleToMove)
+        {
+            _rb.velocity = transform.forward * _movespeed;
             _animator.SetBool("isRunning", true);
         }
         else
         {
+            _rb.velocity = Vector3.zero;
             _animator.SetBool("isRunning", false);
         }
     }
-
-    
-
 }
 
