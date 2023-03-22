@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour
     private void CalculateMoveDirection()
     {
         _moveDirection = new Vector3(_joystickMove.Horizontal * _movespeed, 0,
-            _joystickMove.Vertical * _movespeed);
+        _joystickMove.Vertical * _movespeed);
     }
 
     private void UpdateRotation()
