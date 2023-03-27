@@ -9,7 +9,7 @@ public class GunController : MonoBehaviour
     public float shotInterval = 0.1f;
     public float shotDistance = 100f;
     public LayerMask targetMask;
-    private float lastShotTime = 0f;
+    private float lastShotTime = 1f;
 
     private void Update()
     {
