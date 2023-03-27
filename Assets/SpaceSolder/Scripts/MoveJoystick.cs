@@ -1,9 +1,9 @@
 using UnityEngine;
 public class MoveJoystick : MonoBehaviour
 {
-    [SerializeField] public float _speed;
-    [SerializeField] public Joystick _moveJoystick;
-    private Rigidbody _rb;
+    [SerializeField] private Rigidbody _rb;
+    public float speed;
+    public Joystick moveJoystick;
 
     void Start()
     {
@@ -12,12 +12,12 @@ public class MoveJoystick : MonoBehaviour
 
     void FixedUpdate()
     {
-        float horizontal = _moveJoystick.Horizontal;
-        float vertical = _moveJoystick.Vertical;
+        float horizontal = moveJoystick.Horizontal;
+        float vertical = moveJoystick.Vertical;
 
         Vector3 movement = new Vector3(horizontal, 0.0f, vertical);
 
-        _rb.AddForce(movement * _speed);
+        _rb.AddForce(movement * speed);
     }
 
     //private void FixedUpdate()

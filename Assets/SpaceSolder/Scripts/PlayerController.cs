@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
@@ -6,9 +8,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float _movespeed;
     [SerializeField] private float _startToMoveOn;
+    [SerializeField] private Button _shootButton;
+    public GameObject bullet;
+    public float speedBullet;
 
     private Vector3 _moveDirection;
 
+    private void Awake()
+    {
+        
+    }
     private void FixedUpdate()
     {
         CalculateMoveDirection();
