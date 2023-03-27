@@ -6,10 +6,10 @@ public class GunController : MonoBehaviour
     public GameObject shotEffect;
     public GameObject hitEffect;
     public Transform shotPoint;
-    public float shotInterval = 0.1f;
+    public float shotInterval = 0.2f;
     public float shotDistance = 100f;
     public LayerMask targetMask;
-    private float lastShotTime = 1f;
+    private float lastShotTime = 0f;
 
     private void Update()
     {
