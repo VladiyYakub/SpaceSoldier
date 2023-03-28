@@ -1,29 +1,36 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    public float damge = 21;
-    public float fireRate = 1;
-    public float distance = 15;
-    public GameObject muzzleFlash;
-    public AudioClip shotSound;
-    public AudioSource audioSoursce;
-
-    public Camera cam;
+    public AudioClip shootSound;
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+    public float fireRate;
+    public float bulletSpeed;
+    private float _lastFireTime;
 
     private void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && Time.time - _lastFireTime >= fireRate)
         {
+            _lastFireTime = Time.time;
             Shoot();
         }
     }
-    void Shoot()
+
+    private void Shoot()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out hit,distance))
-        {
-            Debug.Log("Aim" + hit.collider);
-        }
+        // Создаем звук выстрела
+        AudioSource.PlayClipAtPoint(shootSound, transform.position);
+
+        // Создаем пулю
+        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        // Задаем скорость пули
+        Bullet bulletComponent = bullet.GetComponent<Bullet>();
+        bulletComponent.speed = bulletSpeed;
+
+        // Направляем пулю в точку стрельбы
+        bulletComponent.FlyToPoint(transform.position + transform.forward * 1000f);
     }
 }

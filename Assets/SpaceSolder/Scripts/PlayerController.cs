@@ -9,15 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _movespeed;
     [SerializeField] private float _startToMoveOn;
     [SerializeField] private Button _shootButton;
-    public GameObject bullet;
-    public float speedBullet;
-
+       
     private Vector3 _moveDirection;
-
-    private void Awake()
-    {
-        
-    }
+       
     private void FixedUpdate()
     {
         CalculateMoveDirection();
@@ -41,7 +35,7 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePosition()
     {
-        var isAbleToMove = _joystickMove.Horizontal > _startToMoveOn || _joystickMove.Vertical > _startToMoveOn || 
+        var isAbleToMove = _joystickMove.Horizontal > _startToMoveOn || _joystickMove.Vertical > _startToMoveOn ||
             _joystickMove.Horizontal < -_startToMoveOn || _joystickMove.Vertical < -_startToMoveOn;
 
         if (isAbleToMove)
