@@ -3,13 +3,12 @@
 public class Bullet : MonoBehaviour
 {
     public float speed;
-
-    private Vector3 target;
+    private Vector3 _target;
     private bool _isFlying = false;
 
     public void FlyToPoint(Vector3 target)
     {
-        this.target = target;
+        this._target = target;
         _isFlying = true;
     }
 
@@ -17,17 +16,10 @@ public class Bullet : MonoBehaviour
     {
         if (_isFlying)
         {
-            // Движение к цели
-            Vector3 direction = (target - transform.position).normalized;
+            Vector3 direction = new Vector3(10f, 0, 0);
             transform.position += direction * speed * Time.deltaTime;
-
-            // Если пуля достигла цели, создаем эффект попадания и уничтожаем пулю
-            if (Vector3.Distance(transform.position, target) < 0.1f)
+            if (Vector3.Distance(transform.position, _target) < 0.1f)
             {
-                // Создаем эффект попадания
-                // ...
-
-                // Уничтожаем пулю
                 Destroy(gameObject);
             }
         }
@@ -35,8 +27,10 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        // Уничтожаем пулю при столкновении
         Destroy(gameObject);
     }
 }
+
+
+
 

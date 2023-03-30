@@ -2,8 +2,8 @@
 
 public class GunController : MonoBehaviour
 {
-    //public GameObject weapon;
-    //public GameObject bullet;
+    public GameObject weapon;
+    public GameObject bullet;
     public AudioClip shootSound;
     public GameObject shotEffect;
     public GameObject hitEffect;
@@ -12,7 +12,7 @@ public class GunController : MonoBehaviour
     public float shotInterval;
     public float shotDistance;
     private float lastShotTime;
-    
+
     private void Update()
     {
         if (Input.GetButton("Fire1") && Time.time - lastShotTime >= shotInterval)
@@ -33,8 +33,9 @@ public class GunController : MonoBehaviour
             Instantiate(hitEffect, hitPoint, Quaternion.LookRotation(hit.normal));
         }
         Destroy(newShotEffect, 0.1f);
-    }      
+    }
 }
+
 
 
 
