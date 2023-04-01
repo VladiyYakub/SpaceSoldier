@@ -9,25 +9,21 @@ public class PlayerPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RaycastHit hit;
-        if (Physics.Raycast(_origin.position, Vector3.down, out hit))
-        {
-            float distance = Vector3.Distance(_origin.position, hit.point);
-
-            if (distance > _playerGrounDistance)
-            {
-                Debug.Log("Down");
-                CorrectPlayerHeight(distance - _playerGrounDistance);
-            }
-            else if (distance < _playerGrounDistance + _playerAntistuckOffset)
-            {
-                Debug.Log("Up");
-                CorrectPlayerHeight(-(_playerGrounDistance - distance));
-            }
-        }
-        else
+        if (!Physics.Raycast(_origin.position, Vector3.down, out var hit))
         {
             CorrectPlayerHeight(_fallFakeDistance);
+            return;
+        }
+
+        float distance = Vector3.Distance(_origin.position, hit.point);
+
+        if (distance > _playerGrounDistance)
+        {
+            CorrectPlayerHeight(distance - _playerGrounDistance);
+        }
+        else if (distance < _playerGrounDistance + _playerAntistuckOffset)
+        {
+            CorrectPlayerHeight(-(_playerGrounDistance - distance));
         }
     }
 

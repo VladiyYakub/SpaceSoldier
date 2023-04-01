@@ -1,14 +1,27 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float speed;
+    [SerializeField] private GameObject shootPointDecal;
+    [SerializeField] private float speed;
+    [SerializeField] private Collider[] dontCollideWith;
+
     private Vector3 _target;
+    private Quaternion _decalRotation;
     private bool _isFlying = false;
 
-    public void FlyToPoint(Vector3 target)
+    private List<Collider> _dontCollideWith;
+
+    public void FlyToPoint(Vector3 target, Quaternion decalRotation, params Collider[] dontCollideWith)
     {
-        this._target = target;
+        _dontCollideWith = new List<Collider>();
+        _dontCollideWith.AddRange(this.dontCollideWith);
+        _dontCollideWith.AddRange(dontCollideWith);
+
+        _decalRotation = decalRotation;
+        _target = target;
         _isFlying = true;
     }
 
@@ -16,17 +29,18 @@ public class Bullet : MonoBehaviour
     {
         if (_isFlying)
         {
-            Vector3 direction = new Vector3(10f, 0, 0);
-            transform.position += direction * speed * Time.deltaTime;
-            if (Vector3.Distance(transform.position, _target) < 0.1f)
-            {
-                Destroy(gameObject);
-            }
+            var dirrection = (_target - transform.position).normalized;
+            transform.position += dirrection * speed * Time.deltaTime;
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
+        foreach (var collider in _dontCollideWith)
+            if (collider == other) return;
+
+        Debug.Log(other);
+        Instantiate(shootPointDecal, _target, _decalRotation);
         Destroy(gameObject);
     }
 }

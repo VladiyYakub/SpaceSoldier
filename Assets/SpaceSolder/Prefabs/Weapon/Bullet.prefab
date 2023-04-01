@@ -32,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.13, y: 1.51, z: 0.17}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,6 +56,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -93,7 +95,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7827845535652539877}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -110,8 +112,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -127,6 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c8be96b2c9d264192b7555f672f69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootPointDecal: {fileID: 3332818976078944562, guid: 9849c0aad665f794fa4757328852cdd7, type: 3}
+  speed: 40
+  dontCollideWith:
+  - {fileID: 2700822261115082654}
 --- !u!114 &-7974101837017085381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,4 +145,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e3fd53e8a058de4aae89c9b2196be16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 5
+  delay: 10
