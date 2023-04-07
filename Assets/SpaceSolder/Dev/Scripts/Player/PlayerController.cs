@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -8,10 +9,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private float _movespeed;
     [SerializeField] private float _startToMoveOn;
-    [SerializeField] private Button _shootButton;
-       
+    [SerializeField] private Button _shootButton;     
+     
     private Vector3 _moveDirection;
-       
+
     private void FixedUpdate()
     {
         CalculateMoveDirection();

@@ -3,18 +3,18 @@ using UnityEngine.AI;
 public class MutantLocomotion : MonoBehaviour
 {
     public Transform playerTransform;
-    NavMeshAgent agent;
+    NavMeshAgent mutantEnemy;
     Animator animator;
 
     private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
+        mutantEnemy = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
     }
 
     private void Update()
     {
-        agent.destination = playerTransform.position;
-        animator.SetFloat("Walk", agent.velocity.magnitude);
+        mutantEnemy.destination = playerTransform.position;
+        animator.SetFloat("Walk", mutantEnemy.velocity.magnitude);
     }
 }
