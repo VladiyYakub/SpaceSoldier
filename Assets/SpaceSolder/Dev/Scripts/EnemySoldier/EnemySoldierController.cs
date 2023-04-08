@@ -1,56 +1,48 @@
 using UnityEngine;
+using UnityEngine.AI;
 
-public class EnemySoldierController : MonoBehaviour
+public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 {
-    public int health = 100;
-    public float speed = 5f;
-    public int damage = 20;
+    public float health = 100;
     public float attackRange = 100f;
-    public float fireRate = 1f;
 
-    public GameObject bulletPrefab;
-    public Transform bulletSpawnPoint;
+    public Transform playerTransform;
+    public float timeTuRepath;
+    public float distanceToRepath;
 
-    private Transform _player;
-    private float _nextFireTime = 1f;
+    NavMeshAgent soldierEnemy;
+    Animator animator;
+    float timer = 0.0f;
+
     private bool _isDead = false;
 
-    void Start()
+    private void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        soldierEnemy = GetComponent<NavMeshAgent>();
+        animator = GetComponent<Animator>();
     }
 
-    void Update()
+    private void Update()
     {
-        if (!_isDead && _player != null)
+        if (_isDead) return;
+
+        timer -= Time.deltaTime;
+        animator.SetFloat("Speed", soldierEnemy.velocity.magnitude);
+
+        if (timer > 0.0f) return;
+
+        if (Vector3.Distance(playerTransform.position, transform.position) < attackRange)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, _player.position);
+            float spDistance = Vector3.Distance(playerTransform.position, soldierEnemy.destination);
 
-            if (distanceToPlayer <= attackRange)
-            {
-                transform.LookAt(_player);
-
-                if (Time.time >= _nextFireTime)
-                {
-                    _nextFireTime = Time.time + 1f / fireRate;
-                    Shoot();
-                }
-            }
-            else
-            {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
-            }
+            if (spDistance > distanceToRepath)
+                soldierEnemy.destination = playerTransform.position;
         }
+
+        timer = timeTuRepath;
     }
 
-    void Shoot()
-    {
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 20f;
-        Destroy(bullet, 2f);
-    }
-
-    public void TakeDamage(int damage)
+    public void GetDamage(float damage)
     {
         if (!_isDead)
         {
