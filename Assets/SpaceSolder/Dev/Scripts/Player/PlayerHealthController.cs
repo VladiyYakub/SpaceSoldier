@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerHealthController : MonoBehaviour
 {
-    public int maxHealth;
-    public int currentHealth;
+    [SerializeField] private int maxHealth;
+    [SerializeField] private int currentHealth;
 
     void Start()
     {

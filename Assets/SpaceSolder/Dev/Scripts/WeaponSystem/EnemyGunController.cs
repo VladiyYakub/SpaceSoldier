@@ -2,21 +2,21 @@ using UnityEngine;
 
 public class EnemyGunController : GunControllerBase
 {
-    [SerializeField] private Transform target;
-    [SerializeField] private float maxShootAngle;
+    [SerializeField] private Transform _playerTarget;
+    [SerializeField] private float _maxShootAngle;
 
     private void Update()
     {
-        if (target == null)
+        if (_playerTarget == null)
             return;
 
-        if (Vector3.Distance(target.position, transform.position) < CurrentWeapon.Range)
+        if (Vector3.Distance(_playerTarget.position, transform.position) < CurrentWeapon.Range)
         {
-            var dirToTarget = (target.position - transform.position).normalized;
+            var dirToTarget = (_playerTarget.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, dirToTarget) < maxShootAngle)
+            if (Vector3.Angle(transform.forward, dirToTarget) < _maxShootAngle)
             {
-                CurrentWeapon.PointAtTarget(target);
+                CurrentWeapon.PointAtTarget(_playerTarget);
                 Shoot();
             }
         }

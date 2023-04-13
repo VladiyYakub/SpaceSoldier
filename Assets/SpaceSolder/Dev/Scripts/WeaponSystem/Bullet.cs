@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private GameObject _shootPointDecal;
+    [SerializeField] private GameObject _shootPointDecal;    
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
     [SerializeField] private Collider[] dontCollideWith;
@@ -27,7 +27,8 @@ public class Bullet : MonoBehaviour
     }
 
     private void Update()
-    {
+    {       
+
         if (_isFlying)
         {
             var dirrection = (_target - transform.position).normalized;
@@ -45,7 +46,7 @@ public class Bullet : MonoBehaviour
 
         Instantiate(_shootPointDecal, _target, _decalRotation);
         Destroy(gameObject);
-    }
+    }   
 }
 
 

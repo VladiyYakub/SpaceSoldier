@@ -3,12 +3,12 @@ using UnityEngine.AI;
 
 public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 {
-    public float health = 100;
-    public float attackRange = 100f;
+    [SerializeField] private float _health;
+    [SerializeField] private float _attackRange;
 
-    public Transform playerTransform;
-    public float timeTuRepath;
-    public float distanceToRepath;
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private float _timeTuRepath;
+    [SerializeField] private float _distanceToRepath;
 
     NavMeshAgent soldierEnemy;
     Animator animator;
@@ -31,23 +31,23 @@ public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 
         if (timer > 0.0f) return;
 
-        if (Vector3.Distance(playerTransform.position, transform.position) < attackRange)
+        if (Vector3.Distance(_playerTransform.position, transform.position) < _attackRange)
         {
-            float spDistance = Vector3.Distance(playerTransform.position, soldierEnemy.destination);
+            float spDistance = Vector3.Distance(_playerTransform.position, soldierEnemy.destination);
 
-            if (spDistance > distanceToRepath)
-                soldierEnemy.destination = playerTransform.position;
+            if (spDistance > _distanceToRepath)
+                soldierEnemy.destination = _playerTransform.position;
         }
 
-        timer = timeTuRepath;
+        timer = _timeTuRepath;
     }
 
     public void GetDamage(float damage)
     {
         if (!_isDead)
         {
-            health -= damage;
-            if (health <= 0)
+            _health -= damage;
+            if (_health <= 0)
             {
                 Die();
             }
