@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject _bloodEffect;
     [SerializeField] private GameObject _shootPointDecal;    
     [SerializeField] private float _damage;
     [SerializeField] private float _speed;
@@ -35,7 +36,6 @@ public class Bullet : MonoBehaviour
             transform.position += dirrection * _speed * Time.deltaTime;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         foreach (var collider in _dontCollideWith)
@@ -44,9 +44,18 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent<IDamageReceiver>(out var damageReceiver))
             damageReceiver.GetDamage(_damage);
 
-        Instantiate(_shootPointDecal, _target, _decalRotation);
+        if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
+        {
+            Instantiate(_bloodEffect, other.ClosestPoint(transform.position), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(_shootPointDecal, _target, _decalRotation);
+        }
+
         Destroy(gameObject);
-    }   
+    }
+
 }
 
 

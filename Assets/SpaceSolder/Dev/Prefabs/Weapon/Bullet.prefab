@@ -127,7 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6c8be96b2c9d264192b7555f672f69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPointDecal: {fileID: 742811433281958967, guid: 75d34b14c0fca5845b13de24022ee2e3, type: 3}
+  _bloodEffect: {fileID: 742811433281958967, guid: 75d34b14c0fca5845b13de24022ee2e3, type: 3}
+  _shootPointDecal: {fileID: 3332818976078944562, guid: 9849c0aad665f794fa4757328852cdd7, type: 3}
   _damage: 15
   _speed: 100
   dontCollideWith:
