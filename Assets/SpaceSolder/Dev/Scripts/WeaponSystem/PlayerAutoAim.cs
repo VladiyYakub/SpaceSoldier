@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿// TODO: remove this script
+
+using UnityEngine;
 
 public class PlayerAutoAim : MonoBehaviour
 {

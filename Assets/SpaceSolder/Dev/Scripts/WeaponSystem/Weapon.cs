@@ -11,8 +11,14 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Collider[] _bulletsDontCollideWith;
 
     public float Range => _shotDistance;
-
     public float FireRate;
+
+    private Quaternion _defaultFirePointRotation;
+
+    private void Awake()
+    {
+        _defaultFirePointRotation =  _firePoint.rotation;
+    }
 
     public void Shoot()
     {
@@ -36,5 +42,10 @@ public class Weapon : MonoBehaviour
     public void PointAtTarget(Transform target)
     {
         _firePoint.LookAt(target);
+    }
+
+    public void PointAtDefault()
+    {
+        _firePoint.rotation = _defaultFirePointRotation;
     }
 }

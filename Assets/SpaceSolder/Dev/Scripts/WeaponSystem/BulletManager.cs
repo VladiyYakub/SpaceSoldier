@@ -1,3 +1,5 @@
+// Write me in Zulip what exactly this script does
+
 using UnityEngine;
 
 public class BulletManager : MonoBehaviour

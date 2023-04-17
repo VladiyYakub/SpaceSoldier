@@ -44,6 +44,11 @@ public class Bullet : MonoBehaviour
         if (other.TryGetComponent<IDamageReceiver>(out var damageReceiver))
             damageReceiver.GetDamage(_damage);
 
+        // TODO: If I want to add some new effects on different objects?
+        // I'm need to add new if statements here
+        // Rewrite IDamageReceiver GetDamage() method to obtain parameter hit
+        // than we can instantiate effect by this hit point in concrete damage receiver instead of do it here
+
         if (other.gameObject.CompareTag("Player") || other.gameObject.CompareTag("Enemy"))
         {
             Instantiate(_bloodEffect, other.ClosestPoint(transform.position), Quaternion.identity);

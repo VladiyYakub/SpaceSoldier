@@ -41,7 +41,7 @@ public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 
         timer = _timeTuRepath;
     }
-
+ 
     public void GetDamage(float damage)
     {
         if (!_isDead)

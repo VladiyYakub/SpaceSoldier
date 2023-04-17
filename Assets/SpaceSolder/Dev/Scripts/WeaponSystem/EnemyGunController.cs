@@ -1,3 +1,5 @@
+// TODO: add more same enemies to the game scene and describe in Zulip what kind of refactor need to be done
+
 using UnityEngine;
 
 public class EnemyGunController : GunControllerBase
