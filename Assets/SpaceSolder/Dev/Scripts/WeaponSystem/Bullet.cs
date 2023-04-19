@@ -2,6 +2,8 @@
 using System.Linq;
 using UnityEngine;
 
+using static Weapon;
+
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private GameObject _bloodEffect;

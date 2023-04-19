@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemySoldierController : MonoBehaviour, IDamageReceiver
+public class EnemySoldierController : MonoBehaviour
 {
     [SerializeField] private float _health;
     [SerializeField] private float _attackRange;
@@ -41,7 +41,7 @@ public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 
         timer = _timeTuRepath;
     }
- 
+
     public void GetDamage(float damage)
     {
         if (!_isDead)
