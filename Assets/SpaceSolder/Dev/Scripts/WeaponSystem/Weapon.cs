@@ -28,13 +28,18 @@ public class Weapon : MonoBehaviour
 
         if (Physics.Raycast(_firePoint.position, _firePoint.forward, out var hit, _shotDistance))
         {
-            bullet.FlyToPoint(hit.point, Quaternion.LookRotation(hit.normal), _bulletsDontCollideWith);
+            bullet.FlyToPoint(hit, _bulletsDontCollideWith);
             Debug.DrawLine(_firePoint.position, hit.point, Color.green, 1f);
         }
         else
         {
+            var calculatedHit = new RaycastHit();
             var calculatedTarget = _firePoint.forward * _shotDistance;
-            bullet.FlyToPoint(calculatedTarget, Quaternion.identity, _bulletsDontCollideWith);
+
+            calculatedHit.point = calculatedTarget;
+            calculatedHit.normal = Vector3.zero;
+
+            bullet.FlyToPoint(calculatedHit, _bulletsDontCollideWith);
             Debug.DrawRay(_firePoint.position, calculatedTarget, Color.red, 1f);
         }
     }
@@ -48,11 +53,4 @@ public class Weapon : MonoBehaviour
     {
         _firePoint.rotation = _defaultFirePointRotation;
     }
-
-    public interface IDamageReceiver
-    {
-        public void GetDamage(float damage, RaycastHit hit);
-        void GetDamage(float damage);
-    }
-
 }

@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemySoldierController : MonoBehaviour
+public class EnemySoldierController : MonoBehaviour, IDamageReceiver
 {
+    [SerializeField] private GameObject _bloodEffect;
+    [Space]
     [SerializeField] private float _health;
     [SerializeField] private float _attackRange;
 
@@ -42,16 +44,16 @@ public class EnemySoldierController : MonoBehaviour
         timer = _timeTuRepath;
     }
 
-    public void GetDamage(float damage)
+    public void GetDamage(float damage, RaycastHit hit)
     {
-        if (!_isDead)
-        {
-            _health -= damage;
-            if (_health <= 0)
-            {
-                Die();
-            }
-        }
+        if (_isDead)
+            return;
+
+        _health -= damage;
+        Instantiate(_bloodEffect, hit.point, Quaternion.LookRotation(hit.normal));
+
+        if (_health <= 0)
+            Die();
     }
 
     void Die()

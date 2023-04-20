@@ -9,9 +9,7 @@ public class PlayerGunController : GunControllerBase
     [SerializeField] private float _maxAimAngle;
     [SerializeField] private float _maxAimDistance;
 
-    //private Transform[] _enemies;
-
-    [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private EnemiesData _enemyData;
 
     private List<Transform> _enemies;
     private float _lastCleanupTime = 0f;
@@ -23,12 +21,10 @@ public class PlayerGunController : GunControllerBase
         // avoid using FIND methods
 
 
-        ////var enemies = FindObjectsOfType<EnemyGunController>();
-        ////_enemies = enemies.Select(enemy => enemy.transform).ToArray();
+        var enemies = FindObjectsOfType<EnemyGunController>();
+        _enemies = enemies.Select(enemy => enemy.transform).ToList();
 
         //_enemies = _enemyData.enemies;
-
-        _enemies = _enemyData.enemies.ToList();
 
         if (_shootButton)
             _shootButton.onClick.AddListener(Shoot);
@@ -70,7 +66,5 @@ public class PlayerGunController : GunControllerBase
             CurrentWeapon.PointAtTarget(bestEnemyToAim);
         else
             CurrentWeapon.PointAtDefault();
-
-        //TODO: use List<> instead of array and remove null enemies every second
     }
 }

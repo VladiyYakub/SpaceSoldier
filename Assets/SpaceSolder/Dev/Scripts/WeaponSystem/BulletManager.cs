@@ -27,7 +27,15 @@ public class BulletManager : MonoBehaviour
     private void Shoot()
     {
         var bullet = Instantiate(_bulletPrefab, _shootPoint.position, _shootPoint.rotation);
-        bullet.GetComponent<Bullet>().FlyToPoint(_shootPoint.forward * 1000f, Quaternion.identity);
+
+        var calculatedHit = new RaycastHit();
+        var calculatedTarget = _shootPoint.forward * 1000f;
+
+        calculatedHit.point = calculatedTarget;
+        calculatedHit.normal = Vector3.zero;
+
+
+        bullet.GetComponent<Bullet>().FlyToPoint(calculatedHit);
         bullet.GetComponent<Rigidbody>().velocity = _shootPoint.forward * _bulletSpeed;
         _currentBullets--;
     }
