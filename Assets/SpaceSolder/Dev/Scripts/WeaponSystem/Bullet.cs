@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-using static Weapon;
+//using static Weapon;
 
 public class Bullet : MonoBehaviour
 {

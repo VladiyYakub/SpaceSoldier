@@ -4,23 +4,23 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LevelData/EnemiesData", fileName = "EnemiesData")]
 public class EnemiesData : ScriptableObject
 {
-    [SerializeField] private List<EnemyData> enemies;
+    [SerializeField] private List<EnemyData> _enemies;
 
-    public List<EnemyData> Enemies => enemies;
+    [SerializeField] private List<EnemyData> Enemies => _enemies;
 }
 
 [System.Serializable]
 public struct EnemyData
 {
-    public Vector3 Position;
-    public Quaternion Rotation;
+    [SerializeField] private Vector3 _position;
+    [SerializeField] private Quaternion _rotation;
     [Space]
-    public float MaxShootAngle;
-    public float Health;
-    public float CurrentHealth;
-    public float AttackRange;
-    public float TimeToRepath;
-    public float DistanceToRepath;
+    [SerializeField] private float _maxShootAngle;
+    [SerializeField] private float _health;
+    [SerializeField] private float _currentHealth;
+    [SerializeField] private float _attackRange;
+    [SerializeField] private float _timeToRepath;
+    [SerializeField] private float _distanceToRepath;
 
-    [HideInInspector] public Transform Transform;
+    [HideInInspector] private Transform _transform;
 }

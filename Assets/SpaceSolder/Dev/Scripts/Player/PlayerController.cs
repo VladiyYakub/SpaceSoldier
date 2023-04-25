@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -5,29 +6,38 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private FixedJoystick _joystickMove;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private float _movespeed;
+    [Space]
+    [SerializeField] private FixedJoystick _moveJoystick;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _lookSpeed;
     [SerializeField] private float _startToMoveOn;
+    [Space]
+    [SerializeField] private FixedJoystick _lookJoystick;
+    [SerializeField] private float _cameraAngel;
+    [SerializeField] private float _cameraAngelSpeed;
+    [Space]
+    [SerializeField] private UIVirtualTouchZone _touchZone;
+    [Space]
+    [SerializeField] private Animator _animator;
+    [Space]
     [SerializeField] private Button _shootButton;     
      
-    private Vector3 _moveDirection;
-
+     private Vector3 _moveDirection;
     private void FixedUpdate()
     {
-        CalculateMoveDirection();
+        CalculateMoveDirection();       
         UpdateRotation();
         UpdatePosition();
     }
     private void CalculateMoveDirection()
     {
-        _moveDirection = new Vector3(_joystickMove.Horizontal * _movespeed, 0,
-        _joystickMove.Vertical * _movespeed);
-    }
+        _moveDirection = new Vector3(_moveJoystick.Horizontal * _moveSpeed, 0,
+        _moveJoystick.Vertical * _moveSpeed);
+    } 
 
     private void UpdateRotation()
     {
-        if (_joystickMove.Horizontal != 0 || _joystickMove.Vertical != 0)
+        if (_moveJoystick.Horizontal != 0 || _moveJoystick.Vertical != 0)
         {
             Quaternion lookDirection = transform.rotation * Quaternion.LookRotation(_moveDirection);
             transform.rotation = Quaternion.Lerp(transform.rotation, lookDirection, 0.05f);
@@ -36,12 +46,12 @@ public class PlayerController : MonoBehaviour
 
     private void UpdatePosition()
     {
-        var isAbleToMove = _joystickMove.Horizontal > _startToMoveOn || _joystickMove.Vertical > _startToMoveOn ||
-            _joystickMove.Horizontal < -_startToMoveOn || _joystickMove.Vertical < -_startToMoveOn;
+        var isAbleToMove = _moveJoystick.Horizontal > _startToMoveOn || _moveJoystick.Vertical > _startToMoveOn ||
+            _moveJoystick.Horizontal < -_startToMoveOn || _moveJoystick.Vertical < -_startToMoveOn;
 
         if (isAbleToMove)
         {
-            _rb.velocity = transform.forward * _movespeed;
+            _rb.velocity = transform.forward * _moveSpeed;
             _animator.SetBool("isRunning", true);
         }
         else
@@ -50,5 +60,6 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isRunning", false);
         }
     }
+   
 }
 
