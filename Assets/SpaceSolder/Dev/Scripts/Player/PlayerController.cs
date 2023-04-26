@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -20,12 +20,12 @@ public class PlayerController : MonoBehaviour
     [Space]
     [SerializeField] private Animator _animator;
     [Space]
-    [SerializeField] private Button _shootButton;     
-     
-     private Vector3 _moveDirection;
+    [SerializeField] private Button _shootButton;
+
+    private Vector3 _moveDirection;
     private void FixedUpdate()
     {
-        CalculateMoveDirection();       
+        CalculateMoveDirection();
         UpdateRotation();
         UpdatePosition();
     }
@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     {
         _moveDirection = new Vector3(_moveJoystick.Horizontal * _moveSpeed, 0,
         _moveJoystick.Vertical * _moveSpeed);
-    } 
+    }
 
     private void UpdateRotation()
     {
@@ -60,6 +60,5 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isRunning", false);
         }
     }
-   
-}
 
+}
