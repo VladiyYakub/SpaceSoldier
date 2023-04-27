@@ -3,10 +3,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private Rigidbody _rb;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private float _startToMoveOn;
     [SerializeField] private FixedJoystick _moveJoystick;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _startToMoveOn;
-    [SerializeField] private Animator _animator;
 
     private Vector3 _moveDirection;
 
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void CalculateMoveDirection()
     {
-        _moveDirection = new Vector3(_moveJoystick.Horizontal * _moveSpeed, 0, _moveJoystick.Vertical * _moveSpeed);
+        _moveDirection = new Vector3(_moveJoystick.Horizontal, 0, _moveJoystick.Vertical) * _moveSpeed;
     }
 
     private void UpdatePosition()
@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isAbleToMove)
         {
-            _rb.velocity = transform.forward * _moveSpeed;
+            _rb.velocity = _moveDirection;
             _animator.SetBool("isRunning", true);
         }
         else
@@ -38,3 +38,4 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 }
+

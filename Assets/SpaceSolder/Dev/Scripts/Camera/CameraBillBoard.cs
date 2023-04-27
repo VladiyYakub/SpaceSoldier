@@ -2,26 +2,22 @@ using UnityEngine;
 
 public class CameraBillBoard : MonoBehaviour
 {
-    [SerializeField] private bool BillboardX = true;
-    [SerializeField] private bool BillboardY = true;
-    [SerializeField] private bool BillboardZ = true;
-    [SerializeField] private float OffsetToCamera;
-    protected Vector3 localStartPosition;
-
-    // Use this for initialization
+    [SerializeField] private bool _billboardX = true;
+    [SerializeField] private bool _billboardY = true;
+    [SerializeField] private bool _billboardZ = true;
+    [SerializeField] private float _offsetToCamera;
+    protected Vector3 localStartPosition;    
     void Start()
     {
         localStartPosition = transform.localPosition;
-    }
-
-    // Update is called once per frame
+    }    
     void Update()
     {
         transform.LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward,
                                                                Camera.main.transform.rotation * Vector3.up);
-        if (!BillboardX || !BillboardY || !BillboardZ)
-            transform.rotation = Quaternion.Euler(BillboardX ? transform.rotation.eulerAngles.x : 0f, BillboardY ? transform.rotation.eulerAngles.y : 0f, BillboardZ ? transform.rotation.eulerAngles.z : 0f);
+        if (!_billboardX || !_billboardY || !_billboardZ)
+            transform.rotation = Quaternion.Euler(_billboardX ? transform.rotation.eulerAngles.x : 0f, _billboardY ? transform.rotation.eulerAngles.y : 0f, _billboardZ ? transform.rotation.eulerAngles.z : 0f);
         transform.localPosition = localStartPosition;
-        transform.position = transform.position + transform.rotation * Vector3.forward * OffsetToCamera;
+        transform.position = transform.position + transform.rotation * Vector3.forward * _offsetToCamera;
     }
 }
