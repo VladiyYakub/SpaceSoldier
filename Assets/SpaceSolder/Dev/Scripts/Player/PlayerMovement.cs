@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isAbleToMove)
         {
-            _rb.velocity = _moveDirection;
+            _rb.velocity = Quaternion.LookRotation(transform.forward) * _moveDirection;
             _animator.SetBool("isRunning", true);
         }
         else
