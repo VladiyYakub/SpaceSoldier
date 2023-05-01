@@ -1,8 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-//using static Weapon;
-
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private GameObject _shootPointDecal;    

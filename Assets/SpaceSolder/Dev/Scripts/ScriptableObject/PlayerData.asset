@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b64656d876911ad4dbffaf8e31957b4b, type: 3}
+  m_Name: PlayerData
+  m_EditorClassIdentifier: 
+  _rbPlayer: {fileID: 0}
+  _playerPrefab: {fileID: 0}
+  _playerTransform: {fileID: 0}
+  _moveJoyastick: {fileID: 0}
+  _startMove: 0
+  _moveSpeed: 0
+  _animator: {fileID: 0}
+  _loockJoystick: {fileID: 0}
+  _maxVerticalAngle: 0
+  _verticalAngleSpeed: 0
+  _maxHorizontalAngle: 0
+  _horizontalAngleSpeed: 0
