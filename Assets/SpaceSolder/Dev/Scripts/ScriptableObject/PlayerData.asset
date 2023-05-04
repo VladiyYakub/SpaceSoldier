@@ -12,15 +12,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64656d876911ad4dbffaf8e31957b4b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _rbPlayer: {fileID: 0}
-  _playerPrefab: {fileID: 0}
-  _playerTransform: {fileID: 0}
-  _moveJoyastick: {fileID: 0}
-  _startMove: 0
-  _moveSpeed: 0
-  _animator: {fileID: 0}
-  _loockJoystick: {fileID: 0}
-  _maxVerticalAngle: 0
-  _verticalAngleSpeed: 0
-  _maxHorizontalAngle: 0
-  _horizontalAngleSpeed: 0
+  PlayerPosition: {x: 0, y: 0, z: 0}
+  PlayerRotation: {x: 0, y: 0, z: 0, w: 0}
+  PlayerPrefab: {fileID: 1432949343686240879, guid: 08343f58d5be592408985d94184141cc, type: 3}
+  _playerGrounDistance: 0.4
+  _playerAntistuckOffset: 1
+  _fallFakeDistance: 1
+  _fallSpeed: 7
+  _startMove: 4
+  _moveSpeed: 10
+  _maxVerticalAngle: 30
+  _horizontalSpeed: 50
+  _verticalSpeed: 50
+  _maxAimAngle: 30
+  _maxAimDistance: 100
+  _shotDistance: 1000
+  _delay: 10
+  _maxBullets: 10
+  _damage: 10
+  _speed: 100
+  _maxHealth: 100
+  _currentHealth: 100

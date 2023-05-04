@@ -4,9 +4,9 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LevelData/EnemiesData", fileName = "EnemiesData")]
 public class EnemiesData : ScriptableObject
 {
-    [SerializeField] private List<EnemyData> _enemies;
+    [SerializeField]  List<EnemyData> _enemies;
 
-    [SerializeField] private List<EnemyData> Enemies => _enemies;
+    [SerializeField] private List<EnemyData> enemies => _enemies;
 }
 
 [System.Serializable]
