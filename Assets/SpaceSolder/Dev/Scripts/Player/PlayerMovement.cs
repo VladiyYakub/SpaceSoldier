@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private Rigidbody _rb;
-    [SerializeField] private Animator _animator;
-    [SerializeField] private float _startToMoveOn;
-    [SerializeField] private FixedJoystick _moveJoystick;
-    [SerializeField] private float _moveSpeed;
-
+    private Rigidbody _rb;
+    private Animator _animator;
+    private FixedJoystick _moveJoystick;
     private Vector3 _moveDirection;
+
+    private float _startToMoveOn;
+    private float _moveSpeed;
+
+    public void Init(PlayerData playerData, Rigidbody rigidbody, Animator animator, FixedJoystick joystick)
+    {
+        _rb = rigidbody;
+        _animator = animator;
+        _moveJoystick = joystick;
+
+        _startToMoveOn = playerData.StartMove;
+        _moveSpeed = playerData.MoveSpeed;
+    }
 
     private void FixedUpdate()
     {

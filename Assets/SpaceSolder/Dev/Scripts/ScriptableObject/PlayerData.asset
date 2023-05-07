@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b64656d876911ad4dbffaf8e31957b4b, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  PlayerPosition: {x: 0, y: 0, z: 0}
-  PlayerRotation: {x: 0, y: 0, z: 0, w: 0}
-  PlayerPrefab: {fileID: 1432949343686240879, guid: 08343f58d5be592408985d94184141cc, type: 3}
+  _playerPosition: {x: 29.565369, y: 1.7667236, z: -48.193195}
+  _playerRotation: {x: 0, y: 0, z: 0, w: 0}
+  _playerPrefab: {fileID: 1516718327526886818, guid: 08343f58d5be592408985d94184141cc, type: 3}
+  _startMove: 0.4
+  _moveSpeed: 8
+  _maxVerticalAngle: 30
+  _horizontalSpeed: 50
+  _verticalSpeed: 50
   _playerGrounDistance: 0.4
   _playerAntistuckOffset: 1
   _fallFakeDistance: 1
   _fallSpeed: 7
-  _startMove: 4
-  _moveSpeed: 10
-  _maxVerticalAngle: 30
-  _horizontalSpeed: 50
-  _verticalSpeed: 50
   _maxAimAngle: 30
   _maxAimDistance: 100
   _shotDistance: 1000

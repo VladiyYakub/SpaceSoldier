@@ -1,13 +1,27 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
-{   
-    [SerializeField] private GameObject _playerPrefab;
-    [SerializeField] private PlayerData _playerData;
-    [SerializeField] private Transform _playerTransform;
+{
+    [Header("Data")]
+    [SerializeField] private Rigidbody _rigidbody;
     [SerializeField] private Animator _animator;
+    [Space]
+    [Header("Components")]
+    [SerializeField] private PlayerMovement _playerMovement;
+
+    private PlayerData _playerData;
+
+    public void Init(PlayerData playerData, FixedJoystick joystick)
+    {
+        _playerData = playerData;
+
+        _playerMovement.Init(playerData, _rigidbody, _animator, joystick);
+    }
+
+    [Space]
+    [Space]
+    [Space]
     [Space]
     [SerializeField] private Transform _origin;
     [Space]
@@ -32,4 +46,3 @@ public class Player : MonoBehaviour
     [SerializeField] private Image _midddleHealth;
     [SerializeField] private Image _lowHealth;
 }
-    
