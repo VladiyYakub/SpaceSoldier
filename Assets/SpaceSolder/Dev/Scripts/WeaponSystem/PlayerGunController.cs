@@ -5,26 +5,29 @@ using UnityEngine.UI;
 
 public class PlayerGunController : GunControllerBase
 {
-    [SerializeField] private Button _shootButton;
-    [SerializeField] private float _maxAimAngle;
-    [SerializeField] private float _maxAimDistance;
+    private Button _shootButton;
+    private float _maxAimAngle;
+    private float _maxAimDistance;
 
-    [SerializeField] private EnemiesData _enemyData;
+    private EnemiesData _enemyData;
 
     private List<Transform> _enemies;
     private float _lastCleanupTime = 0f;
 
+    public void Init(PlayerData playerData, Button button, EnemiesData enemiesData)
+    {
+        _shootButton = button;
+        _enemyData = enemiesData;
+
+        _maxAimAngle = playerData.MaxAimAngle;
+        _maxAimDistance = playerData.MaxAimDistance;
+        _enemyData = playerData.EnemiesData; 
+    }
+
     private void Awake()
     {
-        //TODO: create scriptsbleObject EnemyData, add all enemies transforms to it
-        // than add this SO throw SerializeFied here
-        // avoid using FIND methods
-
-
         var enemies = FindObjectsOfType<EnemyGunController>();
         _enemies = enemies.Select(enemy => enemy.transform).ToList();
-
-        //_enemies = _enemyData.enemies;
 
         if (_shootButton)
             _shootButton.onClick.AddListener(Shoot);

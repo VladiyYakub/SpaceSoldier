@@ -8,7 +8,7 @@ public class BulletManager : MonoBehaviour
     [SerializeField] private Transform _shootPoint;
 
     private int _currentBullets;
-
+   
     private void Start()
     {
         _currentBullets = _maxBullets;

@@ -1,5 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {    
@@ -7,6 +8,7 @@ public class GameManager : MonoBehaviour
     [Space]
     [SerializeField] FixedJoystick _movementJoystick;
     [SerializeField] FixedJoystick _lookJoystick;
+    [SerializeField] Button _shootButton;
 
     private Player _player;
 
@@ -14,5 +16,6 @@ public class GameManager : MonoBehaviour
     {
         _player = Instantiate(_playerData.PlayerPrefab, _playerData.PlayerPosition, _playerData.PlayerRotation);
         _player.Init(_playerData, _movementJoystick);
-    }
+    }  
+
 }

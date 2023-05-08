@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class Player : MonoBehaviour
     [Space]
     [Header("Components")]
     [SerializeField] private PlayerMovement _playerMovement;
+    [SerializeField] private PlayerRotation _playerRotation;
+    [SerializeField] private Button _shootButton;
 
     private PlayerData _playerData;
 
@@ -17,6 +20,17 @@ public class Player : MonoBehaviour
         _playerData = playerData;
 
         _playerMovement.Init(playerData, _rigidbody, _animator, joystick);
+        
+    }
+
+    internal void Init(Button shootButton)
+    {
+        throw new NotImplementedException();
+    }
+
+    internal void Init(object lookJoystick)
+    {
+        throw new NotImplementedException();
     }
 
     [Space]
@@ -29,7 +43,7 @@ public class Player : MonoBehaviour
     [Space]
     [SerializeField] private FixedJoystick _loockJoystick;
     [Space]
-    [SerializeField] private Button _shootButton;
+    //[SerializeField] private Button _shootButton;
     [SerializeField] private EnemiesData _enemyData;
     [Space]
     [SerializeField] private Weapon _weapon;

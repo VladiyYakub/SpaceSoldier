@@ -2,13 +2,24 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    [SerializeField] private Transform _playerTransform;
-    [SerializeField] private FixedJoystick _lookJoystick;
-    [SerializeField] private float _maxVerticalAngle;
-    [SerializeField] private float _horisontalSpeed;
-    [SerializeField] private float _verticalSpeed;
+    private Transform _playerTransform;
+    private FixedJoystick _lookJoystick;
+
+    private float _maxVerticalAngle;
+    private float _horisontalSpeed;
+    private float _verticalSpeed;
 
     private float _verticalOffset = 0f;
+
+    public void Init(PlayerData playerData, Transform transform, FixedJoystick joystick)
+    {
+        _lookJoystick = joystick;
+        _playerTransform = transform;
+
+        _maxVerticalAngle = playerData.MaxVerticalAngle;
+        _horisontalSpeed = playerData.HorizontalSpeed;
+        _verticalSpeed = playerData.VerticalSpeed;
+    }
 
     private void Update()
     {
@@ -26,10 +37,6 @@ public class PlayerRotation : MonoBehaviour
         _playerTransform.Rotate(Vector3.left * y);
     }
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <returns>true if offset was applied</returns>
     private bool ApplyOffset(float modifier)
     {
         _verticalOffset += modifier;
