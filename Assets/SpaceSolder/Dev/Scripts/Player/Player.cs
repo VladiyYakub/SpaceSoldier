@@ -11,27 +11,17 @@ public class Player : MonoBehaviour
     [Header("Components")]
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private PlayerRotation _playerRotation;
-    [SerializeField] private Button _shootButton;
-
+   
     private PlayerData _playerData;
 
-    public void Init(PlayerData playerData, FixedJoystick joystick)
+    public void Init(PlayerData playerData, FixedJoystick moveJoystick)
     {
         _playerData = playerData;
 
-        _playerMovement.Init(playerData, _rigidbody, _animator, joystick);
+        _playerMovement.Init(playerData, _rigidbody, _animator, moveJoystick);
         
     }
-
-    internal void Init(Button shootButton)
-    {
-        throw new NotImplementedException();
-    }
-
-    internal void Init(object lookJoystick)
-    {
-        throw new NotImplementedException();
-    }
+    
 
     [Space]
     [Space]
@@ -42,8 +32,7 @@ public class Player : MonoBehaviour
     [SerializeField] private FixedJoystick _moveJoyastick;
     [Space]
     [SerializeField] private FixedJoystick _loockJoystick;
-    [Space]
-    //[SerializeField] private Button _shootButton;
+    [Space]    
     [SerializeField] private EnemiesData _enemyData;
     [Space]
     [SerializeField] private Weapon _weapon;

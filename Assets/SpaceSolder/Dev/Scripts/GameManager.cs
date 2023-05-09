@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {    
     [SerializeField] private PlayerData _playerData;
+    [SerializeField] private EnemyData _enemyData;
+    [SerializeField] private EnemiesData _enemiesData;
     [Space]
     [SerializeField] FixedJoystick _movementJoystick;
     [SerializeField] FixedJoystick _lookJoystick;

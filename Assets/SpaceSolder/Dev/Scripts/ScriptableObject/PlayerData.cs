@@ -26,7 +26,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float _fallFakeDistance;
     [SerializeField] private float _fallSpeed;
 
-    [Header("Enemy")]
+    [Header("Aiming")]
     [SerializeField] private float _maxAimAngle;
     [SerializeField] private float _maxAimDistance;   
     
@@ -48,23 +48,16 @@ public class PlayerData : ScriptableObject
     public Quaternion PlayerRotation => _playerRotation;
     public Player PlayerPrefab => _playerPrefab;
 
-
+    public Button _shootButton;   
     public Button ShootButton => _shootButton;
-    public EnemiesData EnemiesData => _enemyData;
-
-
-    public Button _shootButton;
-    public EnemiesData _enemyData;
-
-
+    
+    public float CurrentHealth => _currentHealth;
     public float StartMove => _startMove;
     public float MoveSpeed => _moveSpeed;
+
     public float MaxVerticalAngle => _maxVerticalAngle;
     public float HorizontalSpeed => _horizontalSpeed;
     public float VerticalSpeed => _verticalSpeed;
-
-
-    public float MaxAimAngle => _maxAimAngle;
-    public float MaxAimDistance => _maxAimDistance;
+   
 
 }

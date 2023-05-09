@@ -5,24 +5,14 @@ using UnityEngine.UI;
 
 public class PlayerGunController : GunControllerBase
 {
-    private Button _shootButton;
-    private float _maxAimAngle;
-    private float _maxAimDistance;
+    [SerializeField] private Button _shootButton;
+    [SerializeField] private float _maxAimAngle;
+    [SerializeField] private float _maxAimDistance;
 
-    private EnemiesData _enemyData;
+    [SerializeField] private EnemiesData _enemyData;
 
     private List<Transform> _enemies;
-    private float _lastCleanupTime = 0f;
-
-    public void Init(PlayerData playerData, Button button, EnemiesData enemiesData)
-    {
-        _shootButton = button;
-        _enemyData = enemiesData;
-
-        _maxAimAngle = playerData.MaxAimAngle;
-        _maxAimDistance = playerData.MaxAimDistance;
-        _enemyData = playerData.EnemiesData; 
-    }
+    private float _lastCleanupTime = 0f;   
 
     private void Awake()
     {
