@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class PlayerRotation : MonoBehaviour
 {
-    private Transform _playerTransform;
-    private FixedJoystick _lookJoystick;
-
-    private float _maxVerticalAngle;
-    private float _horisontalSpeed;
-    private float _verticalSpeed;
+    public Transform _playerTransform;
+    public FixedJoystick _lookJoystick;
+    
+    public float _maxVerticalAngle;
+    public float _horisontalSpeed;
+    public float _verticalSpeed;
 
     private float _verticalOffset = 0f;
 

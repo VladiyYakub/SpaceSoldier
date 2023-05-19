@@ -21,11 +21,7 @@ public class Player : MonoBehaviour
         _playerMovement.Init(playerData, _rigidbody, _animator, moveJoystick);
         
     }
-    
 
-    [Space]
-    [Space]
-    [Space]
     [Space]
     [SerializeField] private Transform _origin;
     [Space]

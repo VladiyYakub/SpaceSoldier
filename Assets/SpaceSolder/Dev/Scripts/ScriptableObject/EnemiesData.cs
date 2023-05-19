@@ -4,41 +4,71 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "LevelData/EnemiesData", fileName = "EnemiesData")]
 public class EnemiesData : ScriptableObject
 {
-    [SerializeField]  List<EnemyData> _enemies;
+    [SerializeField] private EnemyData _defaultEnemyData;
+    [Space]
+    [SerializeField] private List<EnemyData> _enemies;
 
-    [SerializeField] private List<EnemyData> enemies => _enemies;
-   
+    public List<EnemyData> GetEnemies()
+    {
+        for (int i = 0; i < _enemies.Count; i++)
+        {
+            var enemy = _enemies[i];
+
+            if (enemy.Prafab == null)
+                enemy.Prafab = _defaultEnemyData.Prafab;
+
+            if (enemy.Position == null)
+                enemy.Position = _defaultEnemyData.Position;
+
+            if (enemy.Rotation == null)
+                enemy.Rotation = _defaultEnemyData.Rotation;
+
+            if (enemy.MaxShootAngle == 0f)
+                enemy.MaxShootAngle = _defaultEnemyData.MaxShootAngle;
+
+            if (enemy.Health == 0f)
+                enemy.Health = _defaultEnemyData.Health;    
+
+            if (enemy.CurrentHealth == 0f)
+                enemy.CurrentHealth = _defaultEnemyData.CurrentHealth;
+
+            if (enemy.AttackRange == 0f)
+                enemy.AttackRange = _defaultEnemyData.AttackRange;
+
+            if (enemy.TimeToRepath == 0f)
+                enemy.TimeToRepath = _defaultEnemyData.TimeToRepath;
+
+            if (enemy.DistanceToRepath == 0f)
+                enemy.DistanceToRepath = _defaultEnemyData.DistanceToRepath;
+
+            if (enemy.MaxAimAngle == 0f)
+                enemy.MaxAimAngle = _defaultEnemyData.MaxAimAngle;
+
+            if (enemy.MaxAimDistance == 0f)
+                enemy.MaxAimDistance = _defaultEnemyData.MaxAimDistance;
+        }
+
+        return _enemies;
+
+    }
+
 }
 
 [System.Serializable]
-public struct EnemyData
+
+
+public class EnemyData
 {
-    //public EnemiesData EnemiesData => _enemyData;
-
-    //public EnemyData _enemyData;
-
-    private Vector3 _position;
-    private Quaternion _rotation;
-    
-    private float _maxShootAngle;
-    private float _health;
-    private float _currentHealth;
-    private float _attackRange;
-    private float _timeToRepath;
-    private float _distanceToRepath;
-
-    public float MaxAimAngle => _maxAimAngle;
-    public float MaxAimDistance => _maxAimDistance;
-
-    [HideInInspector] private Transform _transform;
-    private float _maxAimAngle;
-    private float _maxAimDistance;
-
-    public void Init(EnemyData enemyData, Transform transform, Vector3 vector3, Quaternion quaternion)
-    {
-        _transform = transform;
-        _position = vector3;
-        _rotation = quaternion;        
-
-    }
+    public EnemySoldierController Prafab;
+    public Vector3 Position;
+    public Quaternion Rotation;    
+    public float MaxShootAngle;
+    public float Health;
+    public float CurrentHealth;
+    public float AttackRange;    
+    public float TimeToRepath;
+    public float DistanceToRepath;     
+    public float MaxAimAngle;
+    public float MaxAimDistance;
 }
+

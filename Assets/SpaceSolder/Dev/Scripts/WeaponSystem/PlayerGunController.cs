@@ -58,6 +58,6 @@ public class PlayerGunController : GunControllerBase
         if (bestEnemyToAim)
             CurrentWeapon.PointAtTarget(bestEnemyToAim);
         else
-            CurrentWeapon.PointAtDefault();
+            CurrentWeapon.PointAtDefault();                
     }
 }

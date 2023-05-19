@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _playerPosition: {x: 29.565369, y: 1.7667236, z: -48.193195}
-  _playerRotation: {x: 0, y: 0, z: 0, w: 0}
-  _playerPrefab: {fileID: 1516718327526886818, guid: 08343f58d5be592408985d94184141cc, type: 3}
+  _playerRotation: {x: 0, y: 0, z: 0, w: 1}
+  _playerPrefab: {fileID: 5648209935711184971, guid: ead739fac8e558344abf8cef72f1005d, type: 3}
   _startMove: 0.4
   _moveSpeed: 8
   _maxVerticalAngle: 30
@@ -33,3 +33,4 @@ MonoBehaviour:
   _speed: 100
   _maxHealth: 100
   _currentHealth: 100
+  _shootButton: {fileID: 0}
