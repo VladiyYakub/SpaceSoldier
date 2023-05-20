@@ -15,7 +15,7 @@ MonoBehaviour:
   _defaultEnemyData:
     Prafab: {fileID: -2291167119308586510, guid: 08343f58d5be592408985d94184141cc, type: 3}
     Position: {x: 30.4, y: 0, z: -24.172703}
-    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    Rotation: {x: 0, y: 0.42261827, z: 0, w: 0.90630776}
     MaxShootAngle: 0
     Health: 0
     CurrentHealth: 0
@@ -27,6 +27,17 @@ MonoBehaviour:
   _enemies:
   - Prafab: {fileID: -2291167119308586510, guid: 08343f58d5be592408985d94184141cc, type: 3}
     Position: {x: 34.16, y: 0, z: -27.83}
+    Rotation: {x: 0, y: 0, z: 0, w: 0}
+    MaxShootAngle: 0
+    Health: 0
+    CurrentHealth: 0
+    AttackRange: 0
+    TimeToRepath: 0
+    DistanceToRepath: 0
+    MaxAimAngle: 0
+    MaxAimDistance: 0
+  - Prafab: {fileID: -2291167119308586510, guid: 08343f58d5be592408985d94184141cc, type: 3}
+    Position: {x: 30.4, y: 0, z: -24.172703}
     Rotation: {x: 0, y: 0, z: 0, w: 0}
     MaxShootAngle: 0
     Health: 0

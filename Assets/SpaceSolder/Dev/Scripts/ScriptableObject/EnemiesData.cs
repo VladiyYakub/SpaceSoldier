@@ -17,10 +17,10 @@ public class EnemiesData : ScriptableObject
             if (enemy.Prafab == null)
                 enemy.Prafab = _defaultEnemyData.Prafab;
 
-            if (enemy.Position == null)
+            if (enemy.Position == Vector3.zero)
                 enemy.Position = _defaultEnemyData.Position;
 
-            if (enemy.Rotation == null)
+            if (enemy.Rotation == Quaternion.identity)
                 enemy.Rotation = _defaultEnemyData.Rotation;
 
             if (enemy.MaxShootAngle == 0f)
@@ -55,8 +55,6 @@ public class EnemiesData : ScriptableObject
 }
 
 [System.Serializable]
-
-
 public class EnemyData
 {
     public EnemySoldierController Prafab;
