@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private Vector3 _playerPosition;
     [SerializeField] private Quaternion _playerRotation;
     [SerializeField] private Player _playerPrefab;
+    [SerializeField] private Button _shootButton;
     
     [Header("Movement")]
     [SerializeField] private float _startMove;
@@ -46,9 +47,7 @@ public class PlayerData : ScriptableObject
 
     public Vector3 PlayerPosition => _playerPosition;
     public Quaternion PlayerRotation => _playerRotation;
-    public Player PlayerPrefab => _playerPrefab;
-
-    public Button _shootButton;   
+    public Player PlayerPrefab => _playerPrefab;    
     public Button ShootButton => _shootButton;
     
     public float CurrentHealth => _currentHealth;
